@@ -1,0 +1,91 @@
+/* ========================================= */
+/* WOFI — RECTANGULAR PANEL (SHARP)          */
+/* ========================================= */
+
+window {
+  background-color: #0b0b0b;
+  border: 2px solid #e8d5a0;
+  border-radius: 0;
+
+  font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.85);
+}
+
+/* ================= HEADER / INPUT ================= */
+
+#input {
+  margin: 0;
+  padding: 14px 16px;
+
+  background-color: #111111;
+  color: #e8d5a0;
+
+  border: none;
+  border-bottom: 2px solid #1f1f1f;
+  border-radius: 0;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#input:focus {
+  outline: none;
+  border-bottom: 2px solid #e8d5a0;
+}
+
+/* ================= LIST AREA ================= */
+
+#outer-box {
+  padding: 10px;
+}
+
+#inner-box {
+  margin-top: 4px;
+}
+
+/* ================= APP ROW ================= */
+
+#entry {
+  padding: 10px 14px;
+  margin-bottom: 6px;
+
+  background-color: #0f0f0f;
+  border-left: 4px solid transparent;
+
+  color: #d0d0d0;
+  font-size: 13.5px;
+
+  transition: background-color 0.04s linear;
+}
+
+/* ================= SELECTED ================= */
+
+#entry:selected {
+  background-color: #e8d5a0;
+  color: #0b0b0b;
+  border-left: 4px solid #0b0b0b;
+}
+
+/* ================= ICON ================= */
+
+#entry image {
+  margin-right: 12px;
+  -gtk-icon-transform: scale(1.1);
+}
+
+/* ================= TEXT ================= */
+
+#text {
+  letter-spacing: 0.25px;
+}
+
+/* ================= SCROLLBAR ================= */
+
+scrollbar {
+  width: 6px;
+}
+
+scrollbar slider {
+  background-color: #e8d5a0;
+  border-radius: 0;
+}

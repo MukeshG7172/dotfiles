@@ -1,0 +1,8 @@
+
+# Enable colored completion
+set colored-stats on
+set colored-completion-prefix on
+set menu-complete-display-prefix on
+
+# Completion colors (uses LS_COLORS)
+set completion-ignore-case on

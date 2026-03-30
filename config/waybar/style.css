@@ -1,0 +1,170 @@
+/* ===================== GLOBAL ===================== */
+
+* {
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 11.5px;
+  min-height: 0;
+  border: none;
+  box-shadow: none;
+}
+
+/* ===================== BAR ===================== */
+
+#waybar {
+  background: rgba(12, 12, 14, 0.55);
+  color: #e6e6e6;
+  padding: 4px 10px;
+}
+
+/* Container spacing */
+#waybar > box {
+  margin: 0 4px;
+}
+
+/* ===================== COMMON MODULE STYLE ===================== */
+
+#waybar > box > * {
+  padding: 3px 8px;
+  margin: 0 2px;
+  border-radius: 6px;
+  background: transparent;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#waybar > box > *:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ===================== WORKSPACES ===================== */
+
+#workspaces {
+  padding: 0;
+}
+
+#workspaces button {
+  padding: 3px 10px;
+  margin: 0 3px;
+  border-radius: 8px;
+  min-width: 26px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #b8b8b8;
+  font-weight: 500;
+}
+
+#workspaces button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+#workspaces button.active {
+  background: #e6e6e6;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+#workspaces button.urgent {
+  background: rgba(255, 99, 99, 0.35);
+  color: #ffffff;
+}
+/* ===================== WINDOW TITLE ===================== */
+
+#window {
+  color: #cfcfcf;
+  font-weight: 500;
+  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ===================== CLOCK ===================== */
+
+#clock {
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  padding: 3px 12px;
+}
+
+/* ===================== PLAYER ===================== */
+
+#custom-player {
+  color: #d0d0d0;
+  opacity: 0.85;
+}
+
+#custom-player:hover {
+  opacity: 1;
+}
+
+/* ===================== SYSTEM MODULES ===================== */
+
+#backlight,
+#pulseaudio,
+#network,
+#bluetooth,
+#battery,
+#custom-notifications {
+  color: #d6d6d6;
+  margin: 0px 10px;
+}
+
+/* Audio muted */
+#pulseaudio.muted {
+  color: #ff8b8b;
+  margin: 0px 10px;
+}
+
+/* Battery states */
+#battery.warning {
+  color: #ffd27d;
+  margin: 0px 10px;
+}
+
+#battery.critical {
+  color: #ff7a7a;
+  margin: 0px 10px;
+}
+
+/* ===================== NOTIFICATIONS ===================== */
+
+#custom-notifications.empty {
+  color: #888888;
+  margin: 0px 10px;
+
+}
+
+#custom-notifications.notification {
+  color: #ffffff;
+  margin: 0px 10px;
+}
+
+#custom-notifications.dnd {
+  color: #ff9b9b;
+  margin: 0px 10px;
+}
+
+/* ===================== POWER ===================== */
+
+#custom-power {
+  color: #ff7a7a;
+  padding: 3px 10px;
+}
+
+#custom-power:hover {
+  color: #ffffff;
+}
+
+/* ===================== TOOLTIP ===================== */
+
+tooltip {
+  background: rgba(20, 20, 22, 0.95);
+  color: #e6e6e6;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  margin: 0px 10px;
+}
+
+tooltip label {
+  color: #ffffff;
+  margin: 0px 10px;
+}

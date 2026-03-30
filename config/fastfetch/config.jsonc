@@ -1,0 +1,40 @@
+{
+  "logo": {
+    "source": "/home/mukeshg7172/Pictures/wallpapers/mitsuri-kanroji-removebg-preview.png",
+    "width": 25,
+    "padding": {
+      "top": 1
+    }
+  },
+
+  "display": {
+    "separator": "  "
+  },
+
+  "modules": [
+    "title",
+    "separator",
+
+    "os",
+    "host",
+    "kernel",
+    "uptime",
+    "packages",
+    "shell",
+    "terminal",
+    "wm",
+    "theme",
+    "icons",
+    "font",
+    "cursor",
+
+    "cpu",
+    "gpu",
+    "memory",
+    "disk",
+    "battery",
+
+    "break",
+    "colors"
+  ]
+}
