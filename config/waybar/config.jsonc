@@ -1,21 +1,22 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 22,
-  "spacing": 0,
-  "margin-top": 0,
-  "margin-bottom": 0,
+  "height": 16,
+  "spacing": 1,
+  "margin-top": 2,
+  "margin-left": 8,
+  "margin-right": 8,
 
   "modules-left": [
     "hyprland/workspaces",
     "hyprland/window"
   ],
   "modules-center": [
-    "clock"
+    "custom/player",
+    "clock",
+    "custom/notifications"
   ],
   "modules-right": [
-    "custom/player",
-    "custom/notifications",
     "backlight",
     "pulseaudio",
     "bluetooth",
@@ -26,18 +27,24 @@
 
   "hyprland/workspaces": {
     "disable-scroll": true,
-    "format": "{name}"
+    "all-outputs": true,
+    "format": "{name}",
+    "on-click": "activate"
   },
 
   "hyprland/window": {
-    "format": "{title}",
-    "max-length": 40,
-    "separate-outputs": true
+    "format": "󰍹   {title}",
+    "max-length": 30,
+    "separate-outputs": true,
+    "rewrite": {
+      "": "Desktop"
+    }
   },
 
   "clock": {
     "interval": 1,
-    "format": "{:%a %d %b  %H:%M:%S}",
+    "format": "󰸉   {:%a %d %b  %H:%M}",
+    "format-alt": "󰥔   {:%H:%M:%S}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
 
@@ -53,66 +60,78 @@
   "custom/player": {
     "exec": "~/.config/waybar/scripts/player-mpris-simple.sh",
     "interval": 2,
-    "format": "{}",
+    "format": "󰎈   {}",
     "return-type": "string",
-    "max-length": 40
+    "max-length": 35
   },
 
   "backlight": {
     "device": "intel_backlight",
-    "format": "  {percent}%",
-    "min-length": 7,
+    "format": "{icon}   {percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+    "min-length": 8,
     "on-click": "brightnessctl s +5%",
     "on-click-right": "brightnessctl s 5%-"
   },
 
   "battery": {
     "interval": 30,
-    "format": "{icon}  {capacity}%",
-    "min-length": 7,
-    "format-icons": {
-      "charging":    " ** ",
-      "discharging": "  ",
-      "full":        " -- "
+    "states": {
+      "warning": 30,
+      "critical": 15
     },
+    "format": "{icon}   {capacity}%",
+    "format-charging": "󰂄   {capacity}%",
+    "format-plugged": "󰚥   {capacity}%",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "min-length": 8,
     "tooltip-format": "{timeTo}, {capacity}%"
   },
 
   "network": {
     "interval": 2,
-    "format-wifi":         "    {bandwidthDownBytes}",
-    "format-ethernet":     "    {bandwidthDownBytes}",
-    "format-disconnected": "    off",
-    "min-length": 12,
-    "max-length": 12,
-    "tooltip-format-wifi":     "{essid}  {signalStrength}% | down:{bandwidthDownBytes} up:{bandwidthUpBytes}",
-    "tooltip-format-ethernet": "{ifname}: {ipaddr} | down:{bandwidthDownBytes} up:{bandwidthUpBytes}",
-    "on-click": "kitty -e nmtui"
+    "format-wifi": "󰤨  {bandwidthDownBytes}",
+    "format-ethernet": "󰈀  {bandwidthDownBytes}",
+    "format-disconnected": "󰤭  Off",
+    "min-length": 8,
+    "max-length": 10,
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) | 󰇚 {bandwidthDownBytes}  󰕒 {bandwidthUpBytes}",
+    "tooltip-format-ethernet": "{ifname}: {ipaddr} | 󰇚 {bandwidthDownBytes}  󰕒 {bandwidthUpBytes}",
+    "on-click": "kitty -e nmtui",
+    "on-click-right": "nmcli radio wifi toggle"
   },
 
   "bluetooth": {
-    "format":                                     "",
-    "format-disabled":                            "",
-    "format-connected":                           "  {num_connections}",
-    "tooltip-format":                             "{status}",
-    "tooltip-format-connected":                   "{device_enumerate}",
-    "tooltip-format-enumerate-connected":         "{device_alias}",
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱 {num_connections}",
+    "tooltip-format": "{status}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
     "tooltip-format-enumerate-connected-battery": "{device_alias} - {device_battery_percentage}%",
     "on-click": "blueman-manager"
   },
 
   "pulseaudio": {
-    "format":       "{icon}  {volume}%",
-    "format-muted": "x",
-    "format-icons": [" ", "  ", "  "],
-    "min-length": 7,
+    "format": "{icon}   {volume}%",
+    "format-muted": "󰖁   Mute",
+    "format-icons": {
+      "headphone": "󰋋",
+      "hands-free": "󰋎",
+      "headset": "󰋎",
+      "phone": "󰏲",
+      "portable": "󰏲",
+      "car": "󰄋",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "min-length": 8,
     "scroll-step": 5,
     "on-click": "pavucontrol",
     "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
   },
 
   "custom/power": {
-    "format": "⏻",
+    "format": "󰐥",
     "tooltip": false,
     "on-click": "wlogout"
   }

@@ -1,83 +1,111 @@
-/* ===================== GLOBAL ===================== */
+/* =============================================================================
+ * DYNAMIC ISLAND WAYBAR THEME (Compact Original Palette)
+ * Ultra-Compact Height, Floating Dynamic Island Pills, User's Original Colors
+ * ============================================================================= */
+
+/* ===================== GLOBAL RESET & TYPOGRAPHY ===================== */
 * {
-  font-family: "SF Pro Display", "Segoe UI", system-ui, -apple-system, sans-serif;
-  font-size: 11px; /* Reduced font size */
+  font-family: "SF Pro Display", "Symbols Nerd Font", "JetBrains Mono", "Font Awesome 6 Free", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
   min-height: 0;
   border: none;
+  border-radius: 0;
+  text-shadow: none;
 }
 
-/* ===================== BAR ===================== */
+/* ===================== ROOT WAYBAR BAR ===================== */
 window#waybar {
-  background-color: #000000; /* Opaque background */
-  border-bottom: 1px solid #1a1a1a;
+  background-color: transparent;
   color: #ffffff;
-}
-
-/* ===================== MODULE GROUPS ===================== */
-.modules-left, .modules-center, .modules-right {
-  background: transparent;
-  padding: 0;
-  margin: 0;
-}
-
-/* ===================== COMMON WIDGET STYLE ===================== */
-/* Opaque, compact pill design */
-.modules-left > widget > *,
-.modules-center > widget > *,
-.modules-right > widget > * {
-  background-color: #1a1a1a; /* Opaque pill background */
-  border: 1px solid #2a2a2a; /* Subtle opaque border */
-  border-radius: 6px; /* Slightly tighter corners */
-  padding: 1px 8px; /* Reduced padding */
-  margin: 2px 3px; /* Reduced margin */
-  color: #e6e6e6;
-  box-shadow: none; /* Removed shadow for a cleaner, flatter opaque look */
   transition: all 0.2s ease-in-out;
 }
 
+/* ===================== MODULE CONTAINERS ===================== */
+/* Transparent outer containers - no outer capsule background */
+.modules-left,
+.modules-center,
+.modules-right {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+/* ===================== INDIVIDUAL MODULE CAPSULES ===================== */
+/* Inner capsules: Black background with neat subtle border */
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+  background-color: #000000;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  padding: 1px 8px;
+  margin: 0 3px;
+  color: #e6e6e6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Hover effect on individual module capsules */
 .modules-left > widget > *:hover,
 .modules-center > widget > *:hover,
 .modules-right > widget > *:hover {
-  background-color: #262626;
+  background-color: #1a1a1a;
   border-color: #3a3a3a;
   color: #ffffff;
 }
 
-/* ===================== WORKSPACES ===================== */
+/* ===================== HYPRLAND WORKSPACES ===================== */
 #workspaces {
-  padding: 1px;
-  margin-left: 4px;
+  background-color: #000000;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  padding: 1px 3px;
+  margin: 0 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 #workspaces button {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
   padding: 1px 6px;
   margin: 0 1px;
-  border-radius: 4px;
-  background: transparent;
-  color: #aaaaaa;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  color: #888888;
+  font-weight: 600;
+  min-width: 16px;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 
 #workspaces button:hover {
-  background: #2a2a2a;
+  background: #1a1a1a;
+  border-color: #2a2a2a;
   color: #ffffff;
 }
 
 #workspaces button.active {
-  background: #333333;
+  background: #2a2a2a;
+  border: 1px solid #3a3a3a;
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 600;
+  padding: 1px 6px;
 }
 
 #workspaces button.urgent {
   background: #ff5555;
+  border: 1px solid #ff5555;
   color: #ffffff;
+  border-radius: 8px;
 }
 
-/* ===================== SPECIFIC WIDGETS ===================== */
+/* ===================== ACTIVE WINDOW TITLE ===================== */
 #window {
+  color: #ffffff;
   font-weight: 500;
+  border-radius: 12px;
 }
 
 #clock {
@@ -91,10 +119,20 @@ window#waybar {
 
 #custom-notifications {
   color: #ffffff;
+  min-width: 16px;
 }
 
 #custom-notifications.dnd {
   color: #888888;
+  min-width: 16px;
+}
+
+#backlight {
+  min-width: 52px;
+}
+
+#battery {
+  min-width: 56px;
 }
 
 #battery.warning {
@@ -107,26 +145,39 @@ window#waybar {
   border-color: #551c1c;
 }
 
-#battery.charging {
+#battery.charging,
+#battery.full {
   color: #50fa7b;
+}
+
+#network {
+  min-width: 60px;
 }
 
 #network.disconnected {
   color: #ff5555;
 }
 
+#bluetooth {
+  min-width: 16px;
+}
+
 #bluetooth.disabled {
   color: #888888;
 }
 
+#pulseaudio {
+  min-width: 56px;
+}
+
 #pulseaudio.muted {
-  color: #888888;
+  color: #ff5555;
 }
 
 #custom-power {
   color: #ff5555;
-  margin-right: 4px;
-  padding: 1px 10px;
+  margin-right: 2px;
+  padding: 1px 8px;
 }
 
 #custom-power:hover {
@@ -140,7 +191,7 @@ tooltip {
   background: #111111;
   color: #e6e6e6;
   padding: 6px 10px;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid #333333;
   font-size: 11px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -149,3 +200,5 @@ tooltip {
 tooltip label {
   color: #cccccc;
 }
+
+

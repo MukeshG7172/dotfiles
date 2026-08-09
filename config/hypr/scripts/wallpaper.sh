@@ -8,20 +8,20 @@ mkdir -p "$(dirname "$STATE")"
 mode="${1:-restore}"
 
 mapfile -t files < <(
-find "$DIR" -type f \( \
-    -iname "*.jpg" -o \
-    -iname "*.jpeg" -o \
-    -iname "*.png" -o \
-    -iname "*.webp" -o \
-    -iname "*.gif" -o \
-    -iname "*.bmp" -o \
-    -iname "*.mp4" -o \
-    -iname "*.mkv" -o \
-    -iname "*.webm" -o \
-    -iname "*.mov" -o \
-    -iname "*.avi" -o \
-    -iname "*.m4v" \
-\) | sort
+    find "$DIR" -type f \( \
+        -iname "*.jpg" -o \
+        -iname "*.jpeg" -o \
+        -iname "*.png" -o \
+        -iname "*.webp" -o \
+        -iname "*.gif" -o \
+        -iname "*.bmp" -o \
+        -iname "*.mp4" -o \
+        -iname "*.mkv" -o \
+        -iname "*.webm" -o \
+        -iname "*.mov" -o \
+        -iname "*.avi" -o \
+        -iname "*.m4v" \
+        \) | sort
 )
 
 count=${#files[@]}
@@ -31,20 +31,20 @@ idx=0
 [[ -f "$STATE" ]] && idx=$(<"$STATE")
 
 case "$mode" in
-    next)
-        idx=$(((idx + 1) % count))
-        ;;
-    prev)
-        idx=$(((idx - 1 + count) % count))
-        ;;
-    restore)
-        if (( idx < 0 || idx >= count )); then
-            idx=0
-        fi
-        ;;
+next)
+    idx=$(((idx + 1) % count))
+    ;;
+prev)
+    idx=$(((idx - 1 + count) % count))
+    ;;
+restore)
+    if ((idx < 0 || idx >= count)); then
+        idx=0
+    fi
+    ;;
 esac
 
-echo "$idx" > "$STATE"
+echo "$idx" >"$STATE"
 
 file="${files[$idx]}"
 
@@ -57,7 +57,7 @@ if [[ "$mime" == video/* ]]; then
 
     pkill -x hyprpaper 2>/dev/null
 
-    if pgrep -x mpvpaper >/dev/null; then
+    if pgrep -x mpvpape >/dev/null; then
         pkill -x mpvpaper
         sleep 0.3
     fi
@@ -86,3 +86,4 @@ else
     hyprctl hyprpaper unload unused >/dev/null 2>&1
 
 fi
+
