@@ -113,8 +113,76 @@ window#waybar {
   color: #ffffff;
 }
 
+/* ===================== MEDIA PLAYER MODULE ===================== */
+#media {
+  background-color: #000000;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  padding: 1px 8px;
+  margin: 0 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modules-center > widget > #media.empty,
+.modules-left > widget > #media.empty,
+.modules-right > widget > #media.empty,
+#media.empty {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+#media:hover {
+  background-color: #121214;
+  border-color: #3e3e4a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+#media:hover.empty {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
 #custom-player {
-  color: #cccccc;
+  color: #e6e6e6;
+  font-weight: 500;
+  padding: 0 4px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+#custom-player-prev,
+#custom-player-play,
+#custom-player-next {
+  background-color: #1a1a1e;
+  border: 1px solid #2d2d36;
+  border-radius: 8px;
+  color: #d1d5db;
+  font-size: 10px;
+  padding: 1px 6px;
+  margin: 0 2px;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+#custom-player-prev:hover,
+#custom-player-play:hover,
+#custom-player-next:hover {
+  background-color: #2b2b36;
+  border-color: #4a4a5a;
+  color: #ffffff;
+}
+
+#custom-player-play.playing {
+  color: #a6e3a1;
+}
+
+#custom-player-play.paused {
+  color: #f9e2af;
 }
 
 #custom-notifications {

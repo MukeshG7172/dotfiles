@@ -11,14 +11,30 @@ title=$(playerctl metadata title 2>/dev/null)
 artist=$(escape "$artist")
 title=$(escape "$title")
 
-[ -z "$status" ] && exit 0
+if [ "$status" = "Playing" ]; then
+  if [ -n "$artist" ] && [ -n "$title" ]; then
+    text="$artist - $title"
+  elif [ -n "$title" ]; then
+    text="$title"
+  elif [ -n "$artist" ]; then
+    text="$artist"
+  else
+    text="Playing Media"
+  fi
+  text="󰎈   $text"
+elif [ "$status" = "Paused" ]; then
+  if [ -n "$artist" ] && [ -n "$title" ]; then
+    text="$artist - $title"
+  elif [ -n "$title" ]; then
+    text="$title"
+  elif [ -n "$artist" ]; then
+    text="$artist"
+  else
+    text="Media Paused"
+  fi
+  text="󰏤   (paused) $text"
+else
+  text="󰎈"
+fi
 
-text="$artist - $title"
-
-case "$status" in
-  Playing) ;;
-  Paused) text="(paused) $text" ;;
-  *) exit 0 ;;
-esac
-
-echo "$text" | sed 's/\(.\{50\}\).*/\1.../'
+echo "$text" | sed 's/\(.\{45\}\).*/\1.../'

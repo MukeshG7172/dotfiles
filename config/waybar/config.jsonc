@@ -12,7 +12,7 @@
     "hyprland/window"
   ],
   "modules-center": [
-    "custom/player",
+    "group/media",
     "clock",
     "custom/notifications"
   ],
@@ -57,12 +57,51 @@
     "on-click-right": "swaync-client -d"
   },
 
+  "group/media": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 300,
+      "transition-left-to-right": true,
+      "click-to-reveal": false
+    },
+    "modules": [
+      "custom/player",
+      "custom/player-prev",
+      "custom/player-play",
+      "custom/player-next"
+    ]
+  },
+
   "custom/player": {
     "exec": "~/.config/waybar/scripts/player-mpris-simple.sh",
     "interval": 2,
-    "format": "󰎈   {}",
+    "format": "{}",
     "return-type": "string",
-    "max-length": 35
+    "max-length": 30,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous"
+  },
+
+  "custom/player-prev": {
+    "exec": "~/.config/waybar/scripts/player-control.sh prev",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "playerctl previous"
+  },
+
+  "custom/player-play": {
+    "exec": "~/.config/waybar/scripts/player-play.sh",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "playerctl play-pause"
+  },
+
+  "custom/player-next": {
+    "exec": "~/.config/waybar/scripts/player-control.sh next",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "playerctl next"
   },
 
   "backlight": {

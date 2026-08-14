@@ -1,91 +1,99 @@
-/* ========================================= */
-/* WOFI — RECTANGULAR PANEL (SHARP)          */
-/* ========================================= */
+/* ==========================================================================
+   WOFI — 3x3 MINIMALIST GRID THEME
+   ========================================================================== */
 
 window {
-  background-color: #0b0b0b;
-  border: 2px solid #e8d5a0;
-  border-radius: 0;
-
-  font-family: "Inter", "JetBrainsMono Nerd Font", sans-serif;
-  box-shadow: 0 18px 50px rgba(0,0,0,0.85);
+    margin: 0px;
+    padding: 16px;
+    border: 1px solid #333333;
+    border-radius: 20px;
+    background-color: #1a1a1a;
+    font-family: "Ubuntu", "Inter", "JetBrains Mono", sans-serif;
+    font-size: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
-/* ================= HEADER / INPUT ================= */
+/* Outer Container Box */
+#outer-box {
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+}
 
+/* Search Input Field */
 #input {
-  margin: 0;
-  padding: 14px 16px;
-
-  background-color: #111111;
-  color: #e8d5a0;
-
-  border: none;
-  border-bottom: 2px solid #1f1f1f;
-  border-radius: 0;
-
-  font-size: 14px;
-  font-weight: 500;
+    margin: 0px 0px 14px 0px;
+    padding: 10px 16px;
+    border: 1px solid #333333;
+    border-radius: 16px;
+    color: #ffffff;
+    background-color: #111111;
+    font-size: 13px;
+    font-weight: 400;
+    outline: none;
 }
 
 #input:focus {
-  outline: none;
-  border-bottom: 2px solid #e8d5a0;
+    border: 1px solid #e95420;
 }
 
-/* ================= LIST AREA ================= */
-
-#outer-box {
-  padding: 10px;
+#input image {
+    color: #e95420;
+    margin-right: 8px;
 }
 
+/* Inner Box Grid Container */
 #inner-box {
-  margin-top: 4px;
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
 }
 
-/* ================= APP ROW ================= */
+/* Scroll Window */
+#scroll {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
 
+/* Individual Entry Tile (Grid Item) */
 #entry {
-  padding: 10px 14px;
-  margin-bottom: 6px;
-
-  background-color: #0f0f0f;
-  border-left: 4px solid transparent;
-
-  color: #d0d0d0;
-  font-size: 13.5px;
-
-  transition: background-color 0.04s linear;
+    margin: 4px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background-color: transparent;
+    border: 1px solid transparent;
 }
 
-/* ================= SELECTED ================= */
-
-#entry:selected {
-  background-color: #e8d5a0;
-  color: #0b0b0b;
-  border-left: 4px solid #0b0b0b;
+/* Icon Styling */
+#entry image, #img {
+    margin-right: 10px;
+    padding: 0px;
 }
 
-/* ================= ICON ================= */
-
-#entry image {
-  margin-right: 12px;
-  -gtk-icon-transform: scale(1.1);
-}
-
-/* ================= TEXT ================= */
-
+/* Text Styling */
 #text {
-  letter-spacing: 0.25px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    color: #d0d0d0;
+    font-size: 12px;
+    font-weight: 400;
 }
 
-/* ================= SCROLLBAR ================= */
+/* Selected Entry State */
+#entry:selected {
+    background-color: rgba(233, 84, 32, 0.2);
+    border: 1px solid #e95420;
+    border-radius: 12px;
+}
 
+#entry:selected #text {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Hide Scrollbars */
 scrollbar {
-  width: 6px;
-}
-
-scrollbar slider {
-  background-color: #e8d5a0;
-  border-radius: 0;
+    opacity: 0;
 }
